@@ -1,0 +1,46 @@
+﻿@model List<WhyChoose>
+@{
+    ViewData["Title"] = "Why Choose List";
+}
+<div class="col-12 mb-4 p-0">
+    <a class="btn btn-primary" asp-controller="WhyChoose" asp-action="Create">Add New Choose Item</a>
+</div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Why Choose Items</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Icon</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (WhyChoose item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@(Html.Raw(item.Icon))</td>
+                          
+                            <td>@item.Description</td>
+
+                            <td>
+                                <a class="btn btn-outline-success" asp-controller="WhyChoose" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-outline-danger" asp-controller="WhyChoose" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
